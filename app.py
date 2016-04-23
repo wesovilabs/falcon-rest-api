@@ -2,7 +2,6 @@
 
 __author__ = "Iván Corrales Solera <developer@wesovi.com>"
 __written_date = "23/04/2016"
-__title__ =""
 
 
 import falcon
