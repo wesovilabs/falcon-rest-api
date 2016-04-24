@@ -6,17 +6,12 @@ __written_date = "23/04/2016"
 
 import falcon
 
-class BookResource(object):
+from resources.books import BookResource
+from resources.authors import AuthorResource
 
-    def on_get(self,req,resp):
-
-        resp.status= falcon.HTTP_200
-        resp.body = '[' \
-                    '{"title":"Don Quijote de la Mancha", "author":"Miguel de Cervantes"},' \
-                    '{"title":"Romeo y Julieta", "author":"Shackespeare"}' \
-                    ']'
 
 
 wsgi_app = api = falcon.API()
-bookResource = BookResource()
-api.add_route('/books', bookResource)
+
+api.add_route('/books', BookResource())
+api.add_route('/authors',AuthorResource())
