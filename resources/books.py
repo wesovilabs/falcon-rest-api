@@ -28,9 +28,7 @@ class BookResource(object):
             resp.body = json.dumps([book.__dict__ for book in books])
 
 
-
     def delete_mode_enabled(req, resp, resource, params):
-
         raise falcon.HTTPBadRequest('Bad request', 'No valid')
 
     @falcon.before(delete_mode_enabled)
