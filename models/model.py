@@ -1,11 +1,10 @@
 
-import json
-
 class Book(object):
 
-    def __init__(self,title,authorFullName):
+    def __init__(self,id,title,author):
+        self.id = id
         self.title=title
-        self.author=authorFullName
+        self.author=author
 
 
 
