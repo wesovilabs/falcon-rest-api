@@ -18,10 +18,6 @@ class BookDB:
     def all(self):
         return self.books
 
-    def byId(self,book,bookId):
-        return book.id == bookId
-
-
     def one(self,bookId):
         result = next(filter(lambda book: book.id == bookId,self.books),None)
         return result
