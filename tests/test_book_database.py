@@ -27,9 +27,9 @@ class TestBookDatabase:
         assert book.id is 1
         assert book.author == 'Miguel de Cervantes'
         assert book.title == 'Don Quijote de la Mancha'
-        newBook = Book('La Colmenta', 'Camilo José Cela')
-        self.bookDatabaseClient.insert(newBook)
-        book = self.bookDatabaseClient.one(newBook.id)
-        assert newBook.id is book.id
-        assert newBook.title == book.title
-        assert newBook.author == book.author
+        new_book = Book('La Colmenta', 'Camilo José Cela')
+        self.bookDatabaseClient.insert(new_book)
+        book = self.bookDatabaseClient.one(new_book.id)
+        assert new_book.id is book.id
+        assert new_book.title == book.title
+        assert new_book.author == book.author
