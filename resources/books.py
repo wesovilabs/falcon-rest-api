@@ -17,7 +17,7 @@ class BookResource(object):
     def on_get(self,req,resp):
         if req.get_param("id"):
             book = self.bookDB.one(int(req.get_param("id")))
-            if book == None:
+            if book is None:
                 raise falcon.HTTPError(falcon.HTTP_404,'Invalid ID','There is not a book with this id')
             else:
                 resp.status = falcon.HTTP_200
@@ -41,8 +41,10 @@ class BookResource(object):
             raw_json = req.stream.read()
         except Exception as ex:
             raise falcon.HTTPError(falcon.HTTP_400, 'Error', ex.message)
-
-        book = json.loads(raw_json, encoding='utf-8')
+        try:
+            book = json.loads(raw_json, encoding='utf-8')
+        except ValueError:
+            raise falcon.HTTPError(falcon.HTTP_400, 'Invalid JSON','Could not decode the request body. The ''JSON was incorrect.')
         print(book)
         resp.status = falcon.HTTP_201
         resp.body = book

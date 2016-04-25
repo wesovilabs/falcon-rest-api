@@ -7,8 +7,8 @@ class BookDB:
 
     def __init__(self):
         self.books = []
-        self.insert(Book(None,'Don Quijote de la Mancha', 'Miguel de Cervantes'))
-        self.insert(Book(None, 'Romeo y Julieta', 'William Shakespeare'))
+        self.insert(Book('Don Quijote de la Mancha', 'Miguel de Cervantes'))
+        self.insert(Book('Romeo y Julieta', 'William Shakespeare'))
 
     def insert(self,book):
         self.ID+=1
