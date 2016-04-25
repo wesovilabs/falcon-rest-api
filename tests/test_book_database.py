@@ -1,5 +1,5 @@
-
 from database.book import BookDB,Book
+
 
 class TestBookDatabase:
 
@@ -8,7 +8,6 @@ class TestBookDatabase:
 
     def test_default_database_length(self):
         assert self.bookDatabaseClient.books.__len__() is 2
-
 
     def test_all(self):
         assert self.bookDatabaseClient.all().__len__() is 2
