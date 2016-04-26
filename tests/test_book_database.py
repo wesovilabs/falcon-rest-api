@@ -16,7 +16,7 @@ class TestBookDatabase:
 
     def test_insert(self):
         assert self.bookDatabaseClient.books.__len__() is 2
-        book = Book('La Colmenta','Camilo José Cela')
+        book = Book('La Colmena','Camilo José Cela')
         self.bookDatabaseClient.insert(book)
         assert self.bookDatabaseClient.books.__len__() is 3
         assert book.id == 3
@@ -27,7 +27,7 @@ class TestBookDatabase:
         assert book.id is 1
         assert book.author == 'Miguel de Cervantes'
         assert book.title == 'Don Quijote de la Mancha'
-        new_book = Book('La Colmenta', 'Camilo José Cela')
+        new_book = Book('La Colmena', 'Camilo José Cela')
         self.bookDatabaseClient.insert(new_book)
         book = self.bookDatabaseClient.one(new_book.id)
         assert new_book.id is book.id
