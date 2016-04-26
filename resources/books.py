@@ -11,13 +11,19 @@ from database.book import BookDB
 
 class BookResource(object):
 
+
     def __init__(self):
         self.props = ''
         self.bookDB = BookDB()
 
+    def check_secret_token(req, resp, resource, params):
+        if req.get_header('X-MyHeader') is None:
+            raise falcon.HTTPBadRequest('Bad request', 'No valid')
+
+    @falcon.before(check_secret_token)
     def on_get(self,req,resp):
-        if req.get_param("id"):
-            book = self.bookDB.one(int(req.get_param("id")))
+        if req.get_param('id'):
+            book = self.bookDB.one(int(req.get_param('id')))
             if book is None:
                 raise falcon.HTTPError(falcon.HTTP_404,'Invalid ID','There is not a book with this id')
             else:
@@ -29,10 +35,9 @@ class BookResource(object):
             resp.body = json.dumps([book.__dict__ for book in books])
 
 
-    def delete_mode_enabled(req, resp, resource, params):
-        raise falcon.HTTPBadRequest('Bad request', 'No valid')
 
-    @falcon.before(delete_mode_enabled)
+
+    @falcon.before(check_secret_token)
     def on_delete(self,req,resp):
         resp.status = falcon.HTTP_200
 
